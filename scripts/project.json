@@ -1,0 +1,30 @@
+{
+  "name": "scripts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "scripts",
+  "projectType": "scripts",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist",
+        "main": "scripts",
+        "tsConfig": "scripts/tsconfig.json",
+        "external": [
+          "libs"
+        ]
+      }
+    },
+    "myscript": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "yarn nx build scripts",
+          "node dist/myscript/index.js"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}
